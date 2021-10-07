@@ -2,104 +2,360 @@
 <html>
 
 <head>
-  <meta charset="utf-8" />
-  <title>ECharts</title>
-  <!-- 引入刚刚下载的 ECharts 文件 -->
-  <script src="echarts.js"></script>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="echarts.js"></script>
+    <style type="text/css">
+        ul li {
+            list-style: none;
+        }
+
+        body,
+        html {
+            width: 100%;
+            height: 100%;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .headder {
+            width: 100%;
+            height: 8%;
+            background-color: #1D8FF0;
+            text-align: center;
+            margin-top: auto;
+            display: flex;
+            /*实现垂直居中*/
+            align-items: center;
+            /*实现水平居中*/
+            justify-content: center;
+            text-align: justify;
+            margin: 0 auto;
+        }
+
+        .headder p {
+            color: white;
+            font-size: 24px;
+            line-height: 60px;
+            font-family: "Microsoft YaHei";
+        }
+
+        #body_right {
+            width: calc(100% - 200px);
+            float: left;
+            min-height: 100%;
+            display: inline-block;
+            vertical-align: top;
+            background: #f3faff;
+            font-size: 32px;
+            color: #999;
+            text-align: center;
+        }
+
+        .body_left {
+            padding: 0;
+            width: 200px;
+            min-height: 100%;
+            display: inline-block;
+            background: #333951;
+            float: left;
+            font-size: 16px;
+            color: #fff;
+        }
+
+        .body_wai {
+            width: 100%;
+            height: 100%;
+        }
+
+        .body_wai ul li {
+            font-size: 20px;
+        }
+
+        .biao1 {
+            display: none;
+        }
+
+        .bi:hover .biao1 {
+            transition-duration: 0.5s;
+            display: block;
+        }
+
+        .biao2 {
+            display: none;
+        }
+
+        .bi:hover .biao2 {
+            transition-duration: 0.5s;
+            display: block;
+        }
+
+        .bi:hover #er {
+            transition-duration: 0.5s;
+            background-color: #151B32;
+            border-left-width: 6px;
+            border-left-style: solid;
+            border-left-color: #1d8ff0;
+            cursor: pointer;
+        }
+
+        .bi:hover #cla {
+            transition-duration: 0.5s;
+            background-color: #3A3E50;
+        }
+
+        .bi2:hover #cla {
+            transition-duration: 0.5s;
+            background-color: #3A3E50;
+        }
+
+        #yiji {
+            background-color: #292E41;
+            width: 100%;
+        }
+
+        .bi2:hover .biao2 {
+            transition-duration: 0.5s;
+            display: block;
+        }
+
+        .bi2:hover #er {
+            transition-duration: 0.5s;
+            background-color: #151B32;
+        }
+
+        #cla {
+            color: gray;
+        }
+
+        #cla:hover {
+            color: white;
+        }
+
+        #er {
+            padding-left: 10%;
+        }
+
+        #cla {
+            padding-left: 20%;
+        }
+
+        .inputText4 {
+            font-family: Arial, Helvetica, sans-serif;
+            background: none repeat scroll 0 0 #F5F7FD;
+            border: 1px solid #B8BFE9;
+            padding: 5px 7px;
+            width: 100px;
+            vertical-align: middle;
+            height: 30px;
+            font-size: 12px;
+            margin: 0;
+            list-style: none outside none;
+        }
+    </style>
 </head>
 
 <body>
 
-  <form>
-    <input id="input" type="text" placeholder="输入函数" />
-  </form>
-  <button onclick="btn()">测试</button>
+    <div class="headder">
+        <p>可视化数据</p>
 
-  <!-- 为 ECharts 准备一个定义了宽高的 DOM -->
-  <div id="main" style="width: 600px;height:400px;"></div>
-  <script type="text/javascript">
+    </div>
 
-    var chartDom = document.getElementById('main');
-    var myChart = echarts.init(chartDom);
-    var option;
+    <div class="body_wai">
 
-    function func(x) {
-      return Math.sin(x);
-    }
-    function generateData() {
-      let data = [];
-      for (let i = -200; i <= 200; i += 0.1) {
-        data.push([i, func(i)]);
-      }
-      return data;
-    }
-    option = {
-      animation: false,
-      grid: {
-        top: 40,
-        left: 50,
-        right: 40,
-        bottom: 50
-      },
-      xAxis: {
-        name: 'x',
-        minorTick: {
-          show: true
-        },
-        minorSplitLine: {
-          show: true
-        }
-      },
-      yAxis: {
-        name: 'y',
-        min: -100,
-        max: 100,
-        minorTick: {
-          show: true
-        },
-        minorSplitLine: {
-          show: true
-        }
-      },
-      dataZoom: [
-        {
-          show: true,
-          type: 'inside',
-          filterMode: 'none',
-          xAxisIndex: [0],
-          startValue: -20,
-          endValue: 20
-        },
-        {
-          show: true,
-          type: 'inside',
-          filterMode: 'none',
-          yAxisIndex: [0],
-          startValue: -20,
-          endValue: 20
-        }
-      ],
-      series: [
-        {
-          type: 'line',
-          showSymbol: false,
-          clip: true,
-          data: generateData()
-        }
-      ]
-    };
+        <div class="body_left" style="max-height: 650px;">
+            <ul>
+                <li class="biao">
+                    <div id="yiji">
+                        一级菜单
+                    </div>
+                    <div>
+                        <form>
+                            <input id="input" type="text" placeholder="输入函数" />
+                        </form>
+                        <button onclick="btn()">测试</button>
 
-    function btn() {
-      var x = document.getElementById("input")//获取输入框元素
-      var text = x.value; //将输入框的值赋给div标签
-      // TODO：将 text 和 myChart的参数联系起啦
-      if (text == "y=sinx") {
-        option && myChart.setOption(option);
-      } else {
+                    </div>
+                    <ul class="bii">
+                        <li class="bi">
+                            <div id="er" title="展示标题">
 
-      }
-    }
-  </script>
+                                二级菜单
+
+                            </div>
+                            <ul class="biao1">
+                                <li>
+                                    <div id="cla">
+                                        三级菜单1
+                                    </div>
+                                <li>
+                                    <div id="cla">
+                                        三级菜单二
+                                    </div>
+                                </li>
+                        </li>
+                    </ul>
+                </li>
+                <li class="bi">
+                    <div id="er">
+                        二级菜单1
+                    </div>
+                    <ul class="biao1">
+                        <li>
+                            <div id="cla">
+                                三级菜单3
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
+
+            <br />
+
+            <!--   	分割线-->
+            <ul>
+                <li class="biao">
+                    <div id="yiji">
+                        一级菜单
+                    </div>
+                    <ul>
+                        <li class="bi">
+                            <div id="er">
+                                二级菜单
+                            </div>
+                            <ul class="biao1">
+                                <li>
+                                    <div id="cla">
+                                        三级菜单1
+                                    </div>
+                                <li>
+                                    <div id="cla">
+                                        三级菜单二
+                                    </div>
+                                </li>
+                        </li>
+                    </ul>
+                </li>
+                <li class="bi">
+                    <div id="er">
+                        二级菜单1
+                    </div>
+                    <ul class="biao1">
+                        <li>
+                            <div id="cla">
+                                三级菜单3
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+        </div>
+
+        <div id="body_right">
+
+            <div id="flo">
+
+
+
+
+                <div id="container" style="position:absolute; left:400px; top:100px; height:400px; width:600px;"></div>
+                <script type="text/javascript" src="" echarts.js"></script>
+                <script type="text/javascript">
+                    var dom = document.getElementById("container");
+                    var myChart = echarts.init(dom);
+                    var app = {};
+                    var option;
+
+                    function func(x) {
+
+                        return Math.sin(x);
+                    }
+
+                    function generateData() {
+                        let data = [];
+                        for (let i = -200; i <= 200; i += 0.1) {
+                            data.push([i, func(i)]);
+                        }
+                        return data;
+                    }
+
+                    option = {
+                        animation: false,
+                        grid: {
+                            top: 40,
+                            left: 50,
+                            right: 40,
+                            bottom: 50
+                        },
+                        xAxis: {
+                            name: 'x',
+                            minorTick: {
+                                show: true
+                            },
+                            minorSplitLine: {
+                                show: true
+                            }
+                        },
+                        yAxis: {
+                            name: 'y',
+                            min: -100,
+                            max: 100,
+                            minorTick: {
+                                show: true
+                            },
+                            minorSplitLine: {
+                                show: true
+                            }
+                        },
+                        dataZoom: [{ // 缩放功能，可以拖动曲线
+                            show: true,
+                            type: 'inside',
+                            filterMode: 'none',
+                            xAxisIndex: [0], // 0表示第一个x轴，这里只有一个x轴
+                            startValue: -150,
+                            endValue: 150
+                        }, {
+                            show: true,
+                            type: 'inside',
+                            filterMode: 'none',
+                            yAxisIndex: [0], // [0]表示第一个y轴，这里只有一个y轴
+                            startValue: -10,
+                            endValue: 10
+                        }],
+                        series: [
+                            {
+                                type: 'line',
+                                showSymbol: false,
+                                clip: true,
+                                data: generateData()
+                            }
+                        ]
+                    };
+
+
+
+                    function btn() {
+                        var x = document.getElementById("input")//获取输入框元素
+                        var text = x.value; //将输入框的值赋给div标签
+                        // TODO：将 text 和 myChart的参数联系起啦
+                        if (text == "y=sinx") {
+                            myChart.setOption(option);
+                        } else {
+
+                        }
+                    }
+                </script>
+            </div>
+
+        </div>
+
+        </script>
 </body>
 
 </html>
